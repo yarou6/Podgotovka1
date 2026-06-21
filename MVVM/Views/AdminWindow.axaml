@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:MVVM.ViewModels"
+        xmlns:products="clr-namespace:MVVM.Models.DTO.Products"
+        xmlns:categorys="clr-namespace:MVVM.Models.DTO.Categorys"
+        x:Class="MVVM.Views.AdminWindow"
+        x:DataType="vm:AdminViewModel"
+        Title="AdminWindow">
+        
+        <StackPanel Margin="16" Spacing="10">
+                <TextBlock Text="{Binding Title}" FontSize="18"></TextBlock>
+                <TextBlock Text="{Binding ErrorMessange}" Foreground="Brown"></TextBlock>
+                
+                <TextBlock Text="Товары"></TextBlock>
+                <ListBox ItemsSource="{Binding Products}" Height="180">
+                        <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="products:ProductReadDto">
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Medium"></TextBlock>
+                                                <TextBlock Text="{Binding Price, StringFormat='{}{0} руб.'}" Foreground="Green"></TextBlock>
+                                                <TextBlock Text="{Binding Stock, StringFormat='({0} шт)'}" Foreground="Gray"></TextBlock>
+                                        </StackPanel>
+                                </DataTemplate>                                
+                        </ListBox.ItemTemplate>
+                </ListBox>
+                
+                <TextBlock Text="Категории"></TextBlock>
+                <ListBox ItemsSource="{Binding Categories}" Height="120">
+                        <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="categorys:CategoryReadDto">
+                                        <TextBlock Text="{Binding Name}"/> 
+                                </DataTemplate>                                
+                        </ListBox.ItemTemplate>
+                </ListBox>
+                
+                <Button Content="Обновить" Command="{Binding RefreshCommand}"></Button>
+                
+        </StackPanel>
+</Window>

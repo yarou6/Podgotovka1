@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MVVM/App.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/PasswordBox.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/Views/AdminWindow.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/Views/ClientWindow.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/Views/LoginWindow.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/Views/MainWindow.axaml" value="API/API.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
