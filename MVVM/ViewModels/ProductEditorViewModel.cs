@@ -11,8 +11,8 @@ public class ProductEditorViewModel : BaseVM
     private string name;
     
     private string description = string.Empty;
-    private string price = string.Empty;
-    private string stock = string.Empty;
+    private decimal price = 0;
+    private uint stock = 0;
     
     private CategoryReadDto selectedCategory;
     
@@ -28,13 +28,13 @@ public class ProductEditorViewModel : BaseVM
         get => description;
         set => SetField(ref description, value);
     }
-    public string Price
+    public decimal Price
     {
         get => price;
         set => SetField(ref price, value);
     }
 
-    public string Stock
+    public uint Stock
     {
         get => stock;
         set => SetField(ref stock, value);
@@ -53,8 +53,8 @@ public class ProductEditorViewModel : BaseVM
         Categories = categories;
         Name = product.Name;
         Description = product.Description;
-        Price = product.Price.ToString();
-        Stock = product.Stock.ToString();
+        Price = product.Price;
+        Stock = product.Stock;
         SelectedCategory = Categories.FirstOrDefault(c => c.Id == product.CategoryId) ?? Categories.FirstOrDefault();
     }
 
@@ -63,8 +63,8 @@ public class ProductEditorViewModel : BaseVM
     {
         Name = Name,
         Description = Description,
-        Price = decimal.TryParse(Price, out var result) ? result : 0,
-        Stock = uint.TryParse(Stock, out var result1) ? result1 : 0,
+        Price = Price,
+        Stock = Stock,
         CategoryId = SelectedCategory?.Id ?? 0,
     };
     
@@ -72,8 +72,8 @@ public class ProductEditorViewModel : BaseVM
     {
         Name = Name,
         Description = Description,
-        Price = decimal.TryParse(Price, out var result) ? result : 0,
-        Stock = uint.TryParse(Stock, out var result1) ? result1 : 0,
+        Price = Price,
+        Stock = Stock,
         CategoryId = SelectedCategory?.Id ?? 0,
         IsActive = true
     };
