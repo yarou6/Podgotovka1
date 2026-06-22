@@ -61,7 +61,7 @@ public class AdminViewModel : BaseVM
             var products = await apiService.GetProductAsync(includeInactive: true);
             var categories = await apiService.GetCategoriesAsync();
             Categories = new ObservableCollection<CategoryReadDto>(categories);
-            
+            Products = new ObservableCollection<ProductReadDto>(products);
 
         }
         catch(Exception ex)
