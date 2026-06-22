@@ -38,7 +38,7 @@ public class ApiService
     }
     
     public async Task<List<ProductReadDto>> GetProductAsync(bool includeInactive = false) => 
-        await  httpClient.GetFromJsonAsync<List<ProductReadDto>>("api/products");   
+        await  httpClient.GetFromJsonAsync<List<ProductReadDto>>($"api/products?includeInactive={includeInactive.ToString().ToLower()}");   
  
     public async Task CreateProductAsync(ProductCreateDto dto) => 
         await httpClient.PostAsJsonAsync("api/products", dto);

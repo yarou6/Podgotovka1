@@ -40,7 +40,7 @@ public class ClientViewModel : BaseVM
     {
         this.apiService = apiService;
         Title = $"Client: {dto.FullName}";
-        RefreshCommand = new RelayCommand(() => _ = RefreshAsync());
+        RefreshCommand = new RelayCommand(async () => await RefreshAsync());
         _ = LoadAsync();
     }
 
@@ -48,7 +48,7 @@ public class ClientViewModel : BaseVM
     {
         try
         {
-            var products = await apiService.GetProductAsync(includeInactive: true);
+            var products = await apiService.GetProductAsync(includeInactive: false);
             Products = new ObservableCollection<ProductReadDto>(products);
         }
         catch(Exception ex)

@@ -6,9 +6,11 @@
         <entry key="MVVM/App.axaml" value="MVVM/MVVM.csproj" />
         <entry key="MVVM/PasswordBox.axaml" value="MVVM/MVVM.csproj" />
         <entry key="MVVM/Views/AdminWindow.axaml" value="MVVM/MVVM.csproj" />
+        <entry key="MVVM/Views/CategoryEditorWindow.axaml" value="MVVM/MVVM.csproj" />
         <entry key="MVVM/Views/ClientWindow.axaml" value="MVVM/MVVM.csproj" />
         <entry key="MVVM/Views/LoginWindow.axaml" value="MVVM/MVVM.csproj" />
         <entry key="MVVM/Views/MainWindow.axaml" value="API/API.csproj" />
+        <entry key="MVVM/Views/ProductEditorWindow.axaml" value="MVVM/MVVM.csproj" />
       </map>
     </option>
   </component>

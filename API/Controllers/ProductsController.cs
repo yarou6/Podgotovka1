@@ -16,10 +16,17 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductReadDto>>> GetProducts()
+    public async Task<ActionResult<IEnumerable<ProductReadDto>>> GetProducts([FromQuery] bool includeInactive = false)
     {
-        var products = await db.Products.Include(p => p.Category)
-            .Select(p => new ProductReadDto
+        var query = db.Products.Include(p => p.Category).AsQueryable();
+        
+        if (!includeInactive)
+            query = query.Where(p => p.IsActive == true);
+        
+       /* var products = await db.Products.Include(p => p.Category)
+            .Select(p => new ProductReadDto */
+       
+            var products = await query.Select(p => new ProductReadDto
             {
                 Id = p.Id,
                 Name = p.Name,

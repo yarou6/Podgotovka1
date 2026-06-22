@@ -9,14 +9,14 @@
                 <TextBlock Text="{Binding Title}" FontSize="18"></TextBlock>
                 <TextBlock Text="{Binding ErrorMessange}" Foreground="Brown"></TextBlock>
 
-                <TextBlock Text="Товары"></TextBlock>
+                <TextBlock Text="Товары‹"></TextBlock>
                 <ListBox ItemsSource="{Binding Products}" Height="260">
                         <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="products:ProductReadDto">
                                         <StackPanel Orientation="Horizontal" Spacing="10">
                                                 <TextBlock Text="{Binding Name}" FontWeight="Medium"></TextBlock>
                                                 <TextBlock Text="{Binding Price, StringFormat='{}{0} руб.'}" Foreground="Green"></TextBlock>
-                                                <TextBlock Text="{Binding Stock, StringFormat='({0} шт)'}" Foreground="Gray"></TextBlock>
+                                                <TextBlock Text="{Binding Stock, StringFormat='({0} шт‚)'}" Foreground="Gray"></TextBlock>
                                         </StackPanel>
                                 </DataTemplate>
                         </ListBox.ItemTemplate>
