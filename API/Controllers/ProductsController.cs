@@ -40,6 +40,22 @@ public class ProductsController : ControllerBase
         
         return Ok(products);
     }
+
+
+    [HttpPatch("{id}/status")]
+    public async Task<ActionResult> CangeStasus(uint id, [FromQuery] bool IsActive)
+    {
+        var product = await db.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+        if (product is null)
+            return NotFound("Нет товара");
+
+        product.IsActive = IsActive;
+        product.UpdatedAt = DateTime.UtcNow;
+        
+        await db.SaveChangesAsync();
+        return NoContent();
+    }
     
     
     [HttpGet("{id}")]

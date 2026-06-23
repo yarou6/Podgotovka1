@@ -9,45 +9,61 @@
         Height="650"
         Title="AdminWindow">
         
-        <StackPanel Margin="16" Spacing="10">
-                <TextBlock Text="{Binding Title}" FontSize="18"></TextBlock>
-                <TextBlock Text="{Binding ErrorMessange}" Foreground="Brown"></TextBlock>
-                
-                <TextBlock Text="Товары"></TextBlock>
-                <ListBox ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Height="180">
+        <Grid Margin="16" RowDefinitions="Auto,Auto,*" RowSpacing="10">
+        <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="SemiBold"/>
+        <TextBlock Grid.Row="1" Text="{Binding ErrorMessange}" Foreground="Brown"/>
+
+        <TabControl Grid.Row="2">
+            <TabItem Header="Товары">
+                <StackPanel Margin="0,10,0,0" Spacing="10">
+                    <ListBox x:Name="MyRootList" 
+                            ItemsSource="{Binding Products}"
+                             SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                             Height="360">
                         <ListBox.ItemTemplate>
-                                <DataTemplate x:DataType="products:ProductReadDto">
-                                        <StackPanel Orientation="Horizontal" Spacing="10">
-                                                <TextBlock Text="{Binding Name}" FontWeight="Medium"></TextBlock>
-                                                <TextBlock Text="{Binding Price, StringFormat='{}{0} руб.'}" Foreground="Green"></TextBlock>
-                                                <TextBlock Text="{Binding Stock, StringFormat='({0} шт)'}" Foreground="Gray"></TextBlock>
-                                                <TextBlock Text="{Binding CategoryName}" Foreground="Aqua"></TextBlock>
-                                        </StackPanel>
-                                </DataTemplate>                                
+                            <DataTemplate x:DataType="products:ProductReadDto">
+          
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Medium"/>
+                                        <TextBlock Text="{Binding Price, StringFormat='{}{0} руб.'}" Foreground="Green"/>
+                                        <TextBlock Text="{Binding Stock, StringFormat='({0} шт)'}" Foreground="Gray"/>
+                                        <TextBlock Text="{Binding CategoryName}" Foreground="DarkBlue"/>
+                                        <TextBlock Text="{Binding IsActive, StringFormat='Активен: {0}'}" Foreground="Gray"/>
+                                    </StackPanel>
+                            </DataTemplate>
                         </ListBox.ItemTemplate>
-                </ListBox>
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                        <Button Content="Добавить товар" Command="{Binding AddProductCommand}"></Button>
-                        <Button Content="Изменить товар" Command="{Binding EditProductCommand}"></Button>
-                        <Button Content="Удалить товар" Command="{Binding DeleteProductCommand}"></Button>
+                    </ListBox>
+             
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button Content="Добавить" Command="{Binding AddProductCommand}"/>
+                        <Button Content="Редактировать" Command="{Binding EditProductCommand}"/>
+                        <Button Content="Удалить" Command="{Binding DeleteProductCommand}"/>
+                    </StackPanel>
                 </StackPanel>
-                <TextBlock Text="Категории"></TextBlock>
-                <ListBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Height="120">
+            </TabItem>
+
+            <TabItem Header="Категории">
+                <StackPanel Margin="0,10,0,0" Spacing="10">
+                    <ListBox ItemsSource="{Binding Categories}"
+                             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                             Height="360">
                         <ListBox.ItemTemplate>
-                                <DataTemplate x:DataType="categorys:CategoryReadDto">
-                                        <StackPanel Orientation="Horizontal" Spacing="10">
-                                                <TextBlock Text="{Binding Name}"/> 
-                                                <TextBlock Text="{Binding Description}"/>
-                                        </StackPanel>
-                                </DataTemplate>                                
+                            <DataTemplate x:DataType="categorys:CategoryReadDto">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="{Binding Name}" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding Description}" Foreground="Gray"/>
+                                </StackPanel>
+                            </DataTemplate>
                         </ListBox.ItemTemplate>
-                </ListBox>
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                        <Button Content="Добавить категорию" Command="{Binding AddCategoryCommand}"></Button>
-                        <Button Content="Изменить категорию" Command="{Binding EditCategoryCommand}"></Button>
-                        <Button Content="Удалить категорию" Command="{Binding DeleteCategoryCommand}"></Button>
-                        <Button Content="Обновить" Command="{Binding RefreshCommand}"></Button>
+                    </ListBox>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button Content="Добавить" Command="{Binding AddCategoryCommand}"/>
+                        <Button Content="Редактировать" Command="{Binding EditCategoryCommand}"/>
+                        <Button Content="Удалить" Command="{Binding DeleteCategoryCommand}"/>
+                    </StackPanel>
                 </StackPanel>
-                
-        </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>

@@ -61,4 +61,7 @@ public class ApiService
     public async Task RemoveCategoryAsync(uint id) =>
         await httpClient.DeleteAsync($"api/categories/{id}");
     
+    public async Task ChangeProductStatusAsync(uint id, bool IsActive) 
+        => await httpClient.PatchAsJsonAsync($"api/products/{id}/status", IsActive);
+    
 }
